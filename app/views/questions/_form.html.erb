@@ -1,0 +1,25 @@
+<%# This file is considered to be a partial which means you can include it in any other template (like new or edit), you must start the partial name with _ . Partials have access to the same instance variables available in the templates (e.g. @question) %>
+
+<%= @question.errors.full_messages.join(". ") %>
+<br>
+<br>
+
+
+<%# form_for is a Rails helper method %>
+<%= form_for @question do |f| %>
+<%# if @question is not persisted in the database. form_for makes the 'action' of the form go to 'questions_path' and it will make the method of form to be POST%>
+  <div>
+    <%= f.label :title %>
+    <%# Byusing f.text_field :title, if @question has a value for the attribute 'title' it will populate the field with that value. This is usually the case when redisplaying the form after an error occurs %>
+    <%= f.text_field :title %>
+  </div>
+<br>
+  <div>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+
+  <br>
+<%= f.submit %>
+
+<% end %>

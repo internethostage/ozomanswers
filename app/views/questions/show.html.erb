@@ -1,0 +1,9 @@
+<h1><%= @question.title %> </h1>
+<p><%= @question.body %> </p>
+<p style="font-size: 3em">View Count: <%= @question.view_count %></p>
+
+
+<%= link_to "EDIT", edit_question_path(@question) %>
+<%= link_to "DELETE", question_path(@question),
+                      method: :delete,
+                      data: {confirm: "Are you dead on sure you want to do this?"} %>

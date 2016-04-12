@@ -7,6 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<!-- <a href="<%= home_path %>">Home</a>
+|
+<a href="<%= about_us_path %>">About</a>
+| -->
+<!-- The link_to helper method that comes from Rails which generated an <a> HTML element. It takes two primary arguments. The first is for the anchor texto and the second argument is for the "href" value (where you want to link to) -->
+
+
+<%= link_to "Home", root_path %>
+|
+<%= link_to "About", about_us_path %>
+|
+<%= link_to "Contact Us", contact_us_path %>
+|
+<%= link_to "Questions", questions_path %>
+|
+<%= link_to "New Question", new_question_path %>
+<hr>
+<%# flash[:notice] || flash[:alert] %>
+<%= notice || alert %>
+<hr>
 
 <%= yield %>
 
