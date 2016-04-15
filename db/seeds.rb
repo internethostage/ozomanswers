@@ -49,8 +49,8 @@
 #   end
 # end
 
-10.times do
-  Category.create(name: Faker::Hacker.adjective)
-end
+# 10.times do
+#   Category.create(name: Faker::Hacker.adjective)
+# end
 
 # puts Cowsay.say("Generated a 100 questions and 10 categories!")

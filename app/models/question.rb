@@ -6,6 +6,7 @@ class Question < ActiveRecord::Base
   # :nullify - which makes "question_id" NULL for all associated answers
   has_many :answers, dependent: :destroy
   belongs_to :category
+  belongs_to :user
 
   validates(:title, {presence: true, uniqueness: {message: "Must be unique!"}})
   validates :body, length: {minimum: 5}
@@ -50,7 +51,9 @@ end
 # scope :recent_three, lambda {order("created_at DESC").limit(3)}
 
 
-
+  def user_full_name
+    user ? user.full_name : ""
+  end
 
 
 #set it as private as no need external axs from the console

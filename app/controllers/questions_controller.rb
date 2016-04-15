@@ -1,8 +1,11 @@
 class QuestionsController < ApplicationController
+
+before_action :authenticate_user!, except: [:index, :show]
 #Defining a method as a before action will make it so that rails executes that method before executing the action. This is still within the same request cycle
 #You can give the before action method 2 options; :only or :except this will help you limit the action which the find_question method will be executed before
 #In this case, before action will only be executed before show edit update and destroy actions.
 before_action :find_question, only: [:show, :edit, :update, :destroy]
+
 
   def create
     #method one
@@ -21,8 +24,8 @@ before_action :find_question, only: [:show, :edit, :update, :destroy]
 
     # method four Strong Parameters
 
-    @question = Question.new(question_params)
-
+    @question       = Question.new(question_params)
+    @question.user  = current_user
     if @question.save
       flash[:notice] = "Question created!"
       #to change the url and display the page we do

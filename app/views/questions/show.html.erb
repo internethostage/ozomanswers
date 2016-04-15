@@ -1,7 +1,7 @@
 <h1><%= @question.title %> </h1>
 <p><%= @question.body %> </p>
 <p style="font-size: 1.2em">View Count: <%= @question.view_count %></p>
-
+<p>Created by: <%= @question.user_full_name.titleize %></p>
 
 <%= link_to "EDIT", edit_question_path(@question) %>
 <%= link_to "DELETE", question_path(@question),
@@ -19,6 +19,7 @@
 <h2>Answers</h2>
 <% @question.answers.each do |ans| %>
 <%= ans.body %>
+<p> by: <%= ans.user_full_name.titleize %> </p>
 <%= link_to "delete", question_answer_path(@question, ans),
                       data: {confirm: "Are you sure?"},
                       method: :delete %>
