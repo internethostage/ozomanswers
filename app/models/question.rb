@@ -1,4 +1,12 @@
 class Question < ActiveRecord::Base
+
+  #when using 'has_many' you must put a symbol for the associated record in plural format
+  #you also should provide the :dependent option which can be either:
+  # :destroy - which deletes all the associated answers when the question is deleted
+  # :nullify - which makes "question_id" NULL for all associated answers
+  has_many :answers, dependent: :destroy
+  belongs_to :category
+
   validates(:title, {presence: true, uniqueness: {message: "Must be unique!"}})
   validates :body, length: {minimum: 5}
   validates :view_count, numericality: {greater_than_or_equal_to: 0}

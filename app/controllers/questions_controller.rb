@@ -42,6 +42,7 @@ before_action :find_question, only: [:show, :edit, :update, :destroy]
   #WE receive a request such as : GET /questions/56
   #params[:id] will be '56'
   def show
+    @answer = Answer.new
   end
 
 
@@ -78,7 +79,7 @@ private
   end
 
   def question_params
-    params.require(:question).permit([:title, :body])
+    params.require(:question).permit([:title, :body, :category_id])
   end
 
 

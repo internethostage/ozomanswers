@@ -1,9 +1,26 @@
 <h1><%= @question.title %> </h1>
 <p><%= @question.body %> </p>
-<p style="font-size: 3em">View Count: <%= @question.view_count %></p>
+<p style="font-size: 1.2em">View Count: <%= @question.view_count %></p>
 
 
 <%= link_to "EDIT", edit_question_path(@question) %>
 <%= link_to "DELETE", question_path(@question),
                       method: :delete,
                       data: {confirm: "Are you dead on sure you want to do this?"} %>
+
+<hr>
+<%= @answer.errors.full_messages.join(". ") %>
+<%# form_for @answer, url: question_answers_path(@question) do |f| %>
+<%= form_for [@question, @answer] do |form_helper| %>
+  <%= form_helper.text_area :body %>
+  <%= form_helper.submit %>
+<% end %>
+
+<h2>Answers</h2>
+<% @question.answers.each do |ans| %>
+<%= ans.body %>
+<%= link_to "delete", question_answer_path(@question, ans),
+                      data: {confirm: "Are you sure?"},
+                      method: :delete %>
+<hr>
+<% end %>

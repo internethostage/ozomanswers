@@ -22,7 +22,16 @@ Rails.application.routes.draw do
   get "/contact_us" => "contact_us#new"
   post "/contact_us" => "contact_us#create"
 
-  resources :questions
+  resources :questions do
+    # get :search, on: :collection
+    # get :search, on: :member
+    # get :search
+
+    # the answers routes will be the standard ones prefixed with /questions/:question_id
+    # this way if we want to create an answer, we know the question that it references
+    # all the helpers will be the same as before, prefixed with 'question_'
+    resources :answers, only: [:create, :destroy]
+  end
   # get     "/questions/new"       => "questions#new",      as: :new_question
   # post    "/questions"           => "questions#create",   as: :questions
   # get     "/questions/:id"       => "questions#show",     as: :question
