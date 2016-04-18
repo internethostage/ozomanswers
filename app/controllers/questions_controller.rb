@@ -5,7 +5,7 @@ before_action :authenticate_user!, except: [:index, :show]
 #You can give the before action method 2 options; :only or :except this will help you limit the action which the find_question method will be executed before
 #In this case, before action will only be executed before show edit update and destroy actions.
 before_action :find_question, only: [:show, :edit, :update, :destroy]
-
+before_action :authorize_question, only: [:edit, :update, :destroy]
 
   def create
     #method one
@@ -76,6 +76,10 @@ before_action :find_question, only: [:show, :edit, :update, :destroy]
   end
 
 private
+
+  def authorize_question
+    redirect_to root_path unless can? :manage, @question
+  end
 
   def find_question
     @question = Question.find params[:id]

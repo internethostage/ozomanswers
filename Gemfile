@@ -29,6 +29,7 @@ gem 'faker'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'cancancan', '~> 1.13', '>= 1.13.1'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
