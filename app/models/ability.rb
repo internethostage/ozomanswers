@@ -11,6 +11,9 @@ class Ability
     # we instantiate the user to User.new to avoid having user be nil if the user is not signed in. We assume here that "user" will be 'User.new', if the user is not signed in.
     user ||= User.new
 
+    #This gives superpowers to the admin user by having the ability to manage everything. (all actions in all models)
+    can :manage, :all if user.admin?
+
     # here we are defining the ability to manage (do anything) with a question.
     # In the case below we put inside the block an expression that will return true or false. This will determine whether the user is allowed to manage a question or not. We called it :crud
     can :crud, Question do |q|
@@ -21,8 +24,16 @@ class Ability
       (ans.question.user == user || ans.user == user) && user.persisted?
     end
 
-    #This gives superpowers to the admin user by having the ability to manage everything. (all actions in all models)
-    can :manage, :all if user.admin?
+    can :like, Question do |q|
+      #user can't like their own questions
+      q.user != user
+    end
+
+    can :destroy, Like do |l|
+      l.user == user
+    end
+
+
 
 
     # Define abilities for the passed in user here. For example:

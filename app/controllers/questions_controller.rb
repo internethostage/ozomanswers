@@ -89,7 +89,10 @@ private
     params.require(:question).permit([:title, :body, :category_id])
   end
 
-
+  def user_like
+      @user_like ||= @question.like_for(current_user)
+  end
+  helper_method :user_like
 
 
 end

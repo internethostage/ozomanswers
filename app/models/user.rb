@@ -10,6 +10,11 @@ class User < ActiveRecord::Base
   has_many :questions,  dependent: :nullify
   has_many :answers,    dependent: :nullify
 
+  has_many :likes, dependent: :destroy
+  # we use source option in here because we used the questions earlier. So we are using liked_question instead.
+  # Inside the like model there is no association called lied question so we have to specificy the source for Rails to know how to match it
+  has_many :liked_questions, through: :likes, source: :question
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, uniqueness: true

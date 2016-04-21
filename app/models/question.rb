@@ -8,6 +8,9 @@ class Question < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
 
+  has_many :likes, dependent: :destroy
+  has_many :users, through: :likes
+
   validates(:title, {presence: true, uniqueness: {message: "Must be unique!"}})
   validates :body, length: {minimum: 5}
   validates :view_count, numericality: {greater_than_or_equal_to: 0}
@@ -53,6 +56,10 @@ end
 
   def user_full_name
     user ? user.full_name : ""
+  end
+
+  def like_for(user)
+    likes.find_by_user_id user if user
   end
 
 
