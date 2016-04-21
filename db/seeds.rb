@@ -44,7 +44,7 @@
     if random < 10
       q.answers.create(body: Faker::StarWars.quote)
     else
-      q.answers.create(body: Faker::ChuckNorris.fact)
+      q.answers.create(body: Faker::Hacker.say_something_smart)
     end
   end
 end
