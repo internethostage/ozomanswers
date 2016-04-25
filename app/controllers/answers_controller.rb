@@ -3,6 +3,8 @@ class AnswersController < ApplicationController
   before_action :find_question
   before_action :find_and_authorize_answer, only: :destroy
 
+  include QuestionsAnswersHelper
+    helper_method :user_like
 
   def create
     answer_params     = params.require(:answer).permit(:body)
@@ -10,6 +12,7 @@ class AnswersController < ApplicationController
     @answer.question  = @question
     @answer.user      = current_user
     if @answer.save
+      AnswersMailer.notify_question_owner(@answer).deliver_later
       redirect_to question_path(@question), notice: "Thanks for answering!"
     else
       flash[:alert] = "not saved"

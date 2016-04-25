@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   has_many :questions,  dependent: :nullify
   has_many :answers,    dependent: :nullify
 
+  has_many :votes,      dependent: :destroy
+  has_many :voted_questions, through: :votes, source: :question
+
   has_many :likes, dependent: :destroy
   # we use source option in here because we used the questions earlier. So we are using liked_question instead.
   # Inside the like model there is no association called lied question so we have to specificy the source for Rails to know how to match it
@@ -52,5 +55,25 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def generate_password_reset_data
+    generate_password_reset_token
+    self.password_reset_requested_at = Time.now
+    save
+  end
+
+  def password_reset_expired?
+    password_reset_requested_at < 30.minutes.ago
+  end
+
+  private
+
+  def generate_password_reset_token
+    begin
+      self.password_reset_token = SecureRandom.hex(32)
+    end while User.exists?(password_reset_token: self.password_reset_token)
+  end
+
+
 
 end

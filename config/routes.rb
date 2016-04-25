@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
+
+resources :password_resets, only: [:new, :create, :edit, :update]
   #Controller Namespaces and Routing
   # namespace :admin do
   #   resources :questions
@@ -43,6 +46,7 @@ Rails.application.routes.draw do
     # all the helpers will be the same as before, prefixed with 'question_'
     resources :answers, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
+    resources :votes, only: [:create, :update, :destroy]
   end
   # get     "/questions/new"       => "questions#new",      as: :new_question
   # post    "/questions"           => "questions#create",   as: :questions

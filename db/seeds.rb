@@ -35,22 +35,26 @@
 #
 # puts Cowsay.say("Generated 100 products for you master!")
 
-100.times do
-  q = Question.create title:      Faker::Company.bs,
-                      body:       Faker::Lorem.paragraph,
-                      view_count: 0
-  10.times do
-    random = rand(20)
-    if random < 10
-      q.answers.create(body: Faker::StarWars.quote)
-    else
-      q.answers.create(body: Faker::Hacker.say_something_smart)
-    end
-  end
-end
+# 100.times do
+#   q = Question.create title:      Faker::Company.bs,
+#                       body:       Faker::Lorem.paragraph,
+#                       view_count: 0
+#   10.times do
+#     random = rand(20)
+#     if random < 10
+#       q.answers.create(body: Faker::StarWars.quote)
+#     else
+#       q.answers.create(body: Faker::Hacker.say_something_smart)
+#     end
+#   end
+# end
+#
+# 10.times do
+#   Category.create(name: Faker::Hacker.adjective)
+# end
 
-10.times do
-  Category.create(name: Faker::Hacker.adjective)
+30.times do
+  Tag.create(name: Faker::Hipster.word)
 end
 
 puts Cowsay.say("Generated a 100 questions and 10 categories!")

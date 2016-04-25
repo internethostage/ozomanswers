@@ -7,6 +7,9 @@ before_action :authenticate_user!, except: [:index, :show]
 before_action :find_question, only: [:show, :edit, :update, :destroy]
 before_action :authorize_question, only: [:edit, :update, :destroy]
 
+include QuestionsAnswersHelper
+  helper_method :user_like
+
   def create
     #method one
     # @question = Question.new
@@ -78,7 +81,7 @@ before_action :authorize_question, only: [:edit, :update, :destroy]
 private
 
   def authorize_question
-    redirect_to root_path unless can? :manage, @question
+    redirect_to root_path unless can? :crud, @question
   end
 
   def find_question
@@ -86,13 +89,13 @@ private
   end
 
   def question_params
-    params.require(:question).permit([:title, :body, :category_id])
+    params.require(:question).permit([:title, :body, :category_id, {tag_ids: []}])
   end
 
-  def user_like
-      @user_like ||= @question.like_for(current_user)
-  end
-  helper_method :user_like
+  # def user_like
+  #     @user_like ||= @question.like_for(current_user)
+  # end
+  # helper_method :user_like
 
 
 end
