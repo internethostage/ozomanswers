@@ -6,32 +6,41 @@
 
 
 <%# form_for is a Rails helper method %>
-<%= form_for @question do |f| %>
-<%# if @question is not persisted in the database. form_for makes the 'action' of the form go to 'questions_path' and it will make the method of form to be POST%>
-  <div>
-    <%= f.label :title %>
-    <%# Byusing f.text_field :title, if @question has a value for the attribute 'title' it will populate the field with that value. This is usually the case when redisplaying the form after an error occurs %>
-    <%= f.text_field :title %>
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
+      <%= form_for @question do |f| %>
+      <%# if @question is not persisted in the database. form_for makes the 'action' of the form go to 'questions_path' and it will make the method of form to be POST%>
+        <div>
+          <%= f.label :title %>
+          <%# Byusing f.text_field :title, if @question has a value for the attribute 'title' it will populate the field with that value. This is usually the case when redisplaying the form after an error occurs %>
+          <%= f.text_field :title, class:"form-control"%>
+        </div>
+      <br>
+        <div>
+          <%= f.label :body %>
+          <%= f.text_area :body, class:"form-control" %>
+        </div>
+      <br>
+        <div>
+          <%= f.label :category %>
+          <%= f.collection_select :category_id, Category.order(:name), :id, :name, {prompt: "Select a category"}, {class: "form-control"} %>
+        </div>
+      <br>
+        <div>
+          <%= f.label :tag_ids, "Tags" %>
+          <br>
+          <div>
+          <%= f.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name%>
+          </div>
+        </div>
+
+
+
+        <br>
+        <div>
+          <%= f.submit %>
+        </div>
+
+      <% end %>
   </div>
-<br>
-  <div>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
-  <div>
-    <%= f.label :category %>
-    <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
-  </div>
-
-  <div>
-    <%= f.label :tag_ids, "Tags" %>
-    <br>
-    <%= f.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name %>
-  </div>
-
-
-
-  <br>
-<%= f.submit %>
-
-<% end %>
+</div>

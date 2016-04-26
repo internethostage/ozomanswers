@@ -31,6 +31,9 @@ gem 'faker'
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan', '~> 1.13', '>= 1.13.1'
 
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

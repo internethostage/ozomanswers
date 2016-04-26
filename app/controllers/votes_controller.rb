@@ -23,7 +23,7 @@ class VotesController < ApplicationController
 
   def destroy
     vote.destroy
-    redirect_to question, notice: "Vote Undone!"
+    redirect_to question, alert: "Vote Undone!"
   end
 
   private

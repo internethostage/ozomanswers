@@ -16,7 +16,7 @@ class LikesController < ApplicationController
 
   def destroy
     like.destroy
-    redirect_to question_path(like.question_id), notice: "You have un-liked this question!"
+    redirect_to question_path(like.question_id), alert: "You have un-liked this question!"
   end
 
 

@@ -13,31 +13,29 @@
 | -->
 <!-- The link_to helper method that comes from Rails which generated an <a> HTML element. It takes two primary arguments. The first is for the anchor texto and the second argument is for the "href" value (where you want to link to) -->
 
+<%= render 'shared/navigation' %>
 
-<%= link_to "Home", root_path %>
-|
-<%= link_to "About", about_us_path %>
-|
-<%= link_to "Contact Us", contact_us_path %>
-|
-<%= link_to "Questions", questions_path %>
-|
-<%= link_to "New Question", new_question_path %>
-|
-<% if user_signed_in? %>
-  Hello <%= current_user.first_name %>,
-  <%= link_to "Log out", sessions_path, method: :delete %>
-<% else %>
-  <%= link_to "Sign In", new_session_path %>
-  |
-  <%= link_to "Sign Up", new_user_path %>
-<% end %>
-<hr>
 <%# flash[:notice] || flash[:alert] %>
-<%= notice || alert %>
-<hr>
 
-<%= yield %>
+<div id="main-container" class="container">
+      <div class="row">
+        <div class="col-lg-12">
+            <%# flash.each do |key, value| %>
+                <%# content_tag :div, class: "alert alert-#{['success','danger'].include?(key) ? 'success' : 'danger'}" do %>
+                  <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+                <%# value %>
+              <%# end %>
+            <%# end %>
+            <% flash.each do |key, value| %>
+              <div class="alert alert-<%= key %> alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <%= value %>
+              </div>
+            <% end %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
 
 </body>
 </html>
