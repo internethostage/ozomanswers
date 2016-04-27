@@ -1,0 +1,23 @@
+<% user_vote = @question.vote_for(current_user) %>
+<% if user_vote && user_vote.is_up? %>
+  <%= link_to question_vote_path(@question, user_vote), method: :delete do %>
+  <span class="glyphicon glyphicon-hand-right" style="color: red"></span>
+  <% end %>
+  <%= link_to question_vote_path(@question, user_vote, {vote: {is_up: false}}), method: :patch do %>
+  <span class="glyphicon glyphicon-thumbs-down"></span>
+  <% end %>
+<% elsif user_vote %>
+  <%= link_to question_vote_path(@question, user_vote, {vote: {is_up: false}}), method: :patch do %>
+  <span class="glyphicon glyphicon-thumbs-up"></span>
+  <% end %>
+  <%= link_to question_vote_path(@question, user_vote), method: :delete do %>
+  <span class="glyphicon glyphicon-hand-right" style="color: red"></span>
+  <% end %>
+<% else %>
+  <%= link_to question_votes_path(@question, {vote: {is_up: true}}), method: :post do %>
+  <span class="glyphicon glyphicon-thumbs-up"></span>
+  <% end %>
+  <%= link_to question_votes_path(@question, {vote:{is_up: false}}), method: :post do %>
+  <span class="glyphicon glyphicon-thumbs-down"></span>
+  <% end %>
+<% end %>

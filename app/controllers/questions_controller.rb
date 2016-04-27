@@ -36,7 +36,7 @@ include QuestionsAnswersHelper
       # Method 2 a bit simpler
       redirect_to question_path(@question)
     else
-      flash[:alert] = "Question didn't save!"
+      flash.now[:alert] = "Question didn't save!"
       #if the db save fails, it renders the apps/views/questions/new.html.erb because the default in this action is to render app/views/qeuestionscreate.html.erb
       render :new
     end
@@ -49,6 +49,7 @@ include QuestionsAnswersHelper
   #params[:id] will be '56'
   def show
     @answer = Answer.new
+    @list_of_voting_users ||= @question.votes.joins(:user).pluck("users.first_name").join(" ")
   end
 
 
@@ -68,7 +69,7 @@ include QuestionsAnswersHelper
     if @question.update question_params
       redirect_to question_path(@question), notice: "Question updated!"
     else
-      flash[:alert] = "Question didn't save!"
+      flash.now[:alert] = "Question didn't save!"
       render :edit
     end
   end

@@ -15,7 +15,7 @@ class AnswersController < ApplicationController
       AnswersMailer.notify_question_owner(@answer).deliver_later
       redirect_to question_path(@question), notice: "Thanks for answering!"
     else
-      flash[:alert] = "not saved"
+      flash.now[:alert] = "There was an error saving your answer..."
       render "/questions/show"
     end
   end

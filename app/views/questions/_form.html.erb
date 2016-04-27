@@ -26,20 +26,18 @@
           <%= f.collection_select :category_id, Category.order(:name), :id, :name, {prompt: "Select a category"}, {class: "form-control"} %>
         </div>
       <br>
-        <div>
+        <div style="display: inline-block; margin-bottom: 10px">
           <%= f.label :tag_ids, "Tags" %>
           <br>
+          <%= f.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name do |c| %>
+            <span class="checkbox-s col-md-4 col-sm-4 col-xs-6">
+              <%= c.label { c.check_box + c.text } %>
+            </span>
+          <% end %>
+        </div>
           <div>
-          <%= f.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name%>
+            <%= f.submit class:"btn btn-success btn-lg"%>
           </div>
-        </div>
-
-
-
-        <br>
-        <div>
-          <%= f.submit %>
-        </div>
 
       <% end %>
   </div>

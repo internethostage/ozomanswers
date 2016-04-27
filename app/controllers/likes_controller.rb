@@ -8,7 +8,7 @@ class LikesController < ApplicationController
     like.user     = current_user
     like.question = question
     if like.save
-      redirect_to question, notice: "Liked!"
+      redirect_to question, notice: "Question liked!"
     else
       redirect_to question, alert: "You have already liked this question!"
     end
