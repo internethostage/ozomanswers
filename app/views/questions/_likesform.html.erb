@@ -1,9 +1,9 @@
 <% if user_like %>
   <%= link_to question_like_path(@question, user_like), method: :delete do %>
-  <span class="glyphicon glyphicon-heart"></span>
+  <span class="glyphicon glyphicon-heart" style="font-size:1.5em"></span>
   <% end %>
 <% else %>
   <%= link_to question_likes_path(@question), method: :post do %>
-    <span class="glyphicon glyphicon-heart-empty"></span>
+    <span class="glyphicon glyphicon-heart-empty" style="font-size:1.5em"></span>
     <% end %>
 <% end %>

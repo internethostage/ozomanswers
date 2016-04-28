@@ -50,6 +50,7 @@ include QuestionsAnswersHelper
   def show
     @answer = Answer.new
     @list_of_voting_users ||= @question.votes.joins(:user).pluck("users.first_name").join(" ")
+    @list_of_liked_users ||= @question.likes.joins(:user).pluck("users.first_name").join(" ")
   end
 
 

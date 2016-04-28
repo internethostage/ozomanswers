@@ -52,7 +52,30 @@ body { padding-top: 60px; }
 	-webkit-border-radius: 10px;
 }
 
-.questionbox-interior {
+.questionbox-margins {
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.question-body {
+  padding: 10px;
+  border: 1px solid #bbbbbb;
+  background-color: #C7CFD9;
+  border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+.answer-body {
+  padding: 10px;
+  border: 1px solid #bbbbbb;
+  background-color: #C7CFD9;
+  border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+.answer-author{
+  font-size: 1.1em;
+  font-weight: bold;
 }
