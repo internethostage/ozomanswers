@@ -1,36 +1,49 @@
-<h1>Create User</h1>
+  <h1>Create User</h1>
+  <div class="col-md-8 col-xs-12 col-lg-6 col-sm-8">
 
-<% if @user.errors.any? %>
-<ul>
-  <% @user.errors.full_messages.each do |msg| %>
-  <li> <%= msg %></li>
+  <% if @user.errors.any? %>
+      <div id="flashmsg" class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+      <% end %>
+      </div>
   <% end %>
-</ul>
+
+
+
+
+
+
+  <%= form_for @user do |f| %>
+    <div>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class:"form-control input-lg", placeholder:"Ex. John" %>
+    </div>
+    <br>
+    <div>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class:"form-control input-lg", placeholder:"Ex. Doe" %>
+    </div>
+    <br>
+    <div>
+      <%= f.label :email %>
+      <%= f.email_field :email, class:"form-control input-lg", placeholder:"Ex. john@doe.com" %>
+    </div>
+    <br>
+    <div>
+      <%= f.label :password %>
+      <%= f.password_field :password, class:"form-control input-lg", placeholder:"At least 8 characters long" %>
+    </div>
+    <br>
+    <div>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, class:"form-control input-lg", placeholder:"At least 8 characters long" %>
+    </div>
+
+    <br>
+    <div>
+      <%= f.submit "Create an account", class:"btn btn-success btn-lg" %>
+    </div>
   <% end %>
-
-<%= form_for @user do |f| %>
-  <div>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </div>
-  <div>
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
-  <div>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-  </div>
-  <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  <div>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <div>
-    <%= f.submit "Create an account" %>
-  </div>
-<% end %>
+</div>
