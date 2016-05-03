@@ -7,8 +7,8 @@ before_action :authenticate_user!, except: [:index, :show]
 before_action :find_question, only: [:show, :edit, :update, :destroy]
 before_action :authorize_question, only: [:edit, :update, :destroy]
 
-include QuestionsAnswersHelper
-  helper_method :user_like
+# include QuestionsAnswersHelper
+#   helper_method :user_like
 
   def create
     #method one

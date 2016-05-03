@@ -37,18 +37,19 @@
 
 
 
-
-   <%= render "/questions/likesform" %>&nbsp;&nbsp;<%= render "/questions/votesform" %>
+  <div id="question-like">
+    <%= render "/likes/like" %>
+  </div>
+   <%= render "/questions/votesform" %>
 
     <hr>
 
     <h2>Answers</h2>
-    <% @question.answers.each do |ans| %>
-      <div id="answers">
+    <div id="answers">
+      <% @question.answers.each do |ans| %>
         <%= render "/answers/answer", answer: ans %>
-      </div>
-      <br>
     <% end %>
+  </div>
 
     <h2>Add An Answer</h2>
     <div id="answer-form">
