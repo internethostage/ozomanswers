@@ -1,0 +1,10 @@
+
+  <div>
+    <%= @answer.errors.full_messages.join(". ") %>
+    <%# form_for @answer, url: question_answers_path(@question) do |f| %>
+    <%= form_for [@question, answer], remote: true do |form_helper| %>
+      <%= form_helper.text_area :body , class:"input-lg", cols:"40", rows:"4", placeholder: "Add your answer here..."%>
+      <br>
+      <%= form_helper.submit "Post Answer", class:"btn-lg btn-success", data: {disable_with: "submitting..."} %>
+    <% end %>
+  </div>

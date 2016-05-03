@@ -1,0 +1,18 @@
+<%# dom id is used to generate a unique HTML id for elements from and ActiveRecord object. It uses an object type and its id to generate a unique id. %>
+<div id="<%= dom_id(answer) %>" style="<%= style if defined?(style) %>">
+  <div class="answer-body">
+    <span class="answer-author"> By: <%= answer.user_full_name.titleize %> </span>
+    <p><%= answer.body %></p>
+    <br>
+    <br>
+    <div>
+      <% if can? :destroy, answer %>
+      <%= link_to "delete", question_answer_path(@question, answer),
+                            data: {confirm: "Are you sure?"},
+                            method: :delete,
+                            remote: true,
+                            class: 'btn btn-info btn-xs' %>
+      <% end %>
+    </div>
+  </div>
+</div>

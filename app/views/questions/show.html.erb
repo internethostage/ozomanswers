@@ -42,6 +42,18 @@
 
     <hr>
 
-      <%= render "/questions/answersform" %>
+    <h2>Answers</h2>
+    <% @question.answers.each do |ans| %>
+      <div id="answers">
+        <%= render "/answers/answer", answer: ans %>
+      </div>
+      <br>
+    <% end %>
+
+    <h2>Add An Answer</h2>
+    <div id="answer-form">
+      <%= render "/answers/form", answer: @answer %>
+    </div>
+
   </div>
 </div>
