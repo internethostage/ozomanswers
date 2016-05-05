@@ -24,6 +24,15 @@ class AnswersController < ApplicationController
     end
   end
 
+  def edit
+    @answer = Answer.find params[:id]
+  end
+
+  def update
+    
+  end
+
+
 
   def destroy
     @answer.destroy

@@ -44,7 +44,7 @@ resources :password_resets, only: [:new, :create, :edit, :update]
     # the answers routes will be the standard ones prefixed with /questions/:question_id
     # this way if we want to create an answer, we know the question that it references
     # all the helpers will be the same as before, prefixed with 'question_'
-    resources :answers, only: [:create, :destroy]
+    resources :answers, only: [:create, :destroy, :edit, :update]
     resources :likes, only: [:create, :destroy]
     resources :votes, only: [:create, :update, :destroy]
   end

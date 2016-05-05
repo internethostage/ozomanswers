@@ -7,12 +7,20 @@
     <br>
     <div>
       <% if can? :destroy, answer %>
-      <%= link_to "delete", question_answer_path(@question, answer),
+      <%= link_to "Delete", question_answer_path(@question, answer),
                             data: {confirm: "Are you sure?"},
                             method: :delete,
                             remote: true,
                             class: 'btn btn-info btn-xs' %>
       <% end %>
+
+      <% if can? :edit, answer %>
+        <%= link_to "Edit", edit_question_answer_path(@question, answer),
+                            remote: true,
+                            data: {toggle: "modal", target: "#edit-answer"},
+                            class: "btn btn-info btn-xs" %>
+      <% end %>
+
     </div>
   </div>
 </div>
