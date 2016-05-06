@@ -33,6 +33,7 @@ gem 'cancancan', '~> 1.13', '>= 1.13.1'
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'friendly_id'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

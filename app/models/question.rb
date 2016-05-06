@@ -45,7 +45,8 @@ class Question < ActiveRecord::Base
 after_initialize :set_defaults
 before_validation :titelize_title
 
-
+extend FriendlyId
+friendly_id :title, use: :history
 
 def self.recent_three
   order("created_at DESC").limit(3)
@@ -75,6 +76,13 @@ end
   def vote_value
     votes.up_count - votes.down_count
   end
+
+
+
+  # simple alternative to friendly id
+  # def to_param
+  #   "#{id}-#{title}".parameterize
+  # end
 
 
 #set it as private as no need external axs from the console
