@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require chosen
  *= require_tree .
  *= require_self
  */
@@ -21,18 +22,18 @@ body { padding-top: 60px; }
 
 
 
-.checkbox-s {
- display: inline;
- margin-top: 5px;
-}
-
-.checkbox-s label {
- font-weight: normal;
-}
-
-.checkbox-s input[type="checkbox"] {
- margin-right: 5px;
-}
+// .checkbox-s {
+//  display: inline;
+//  margin-top: 5px;
+// }
+//
+// .checkbox-s label {
+//  font-weight: normal;
+// }
+//
+// .checkbox-s input[type="checkbox"] {
+//  margin-right: 5px;
+// }
 
 .questionbox {
 	padding: 20px;
@@ -73,4 +74,19 @@ body { padding-top: 60px; }
 .answer-author{
   font-size: 1.1em;
   font-weight: bold;
+}
+
+form {
+  .checkbox {
+    display: inline-block;
+    margin-right: 10px;
+    input[type="checkbox"] {
+      margin-left: -15px;
+    }
+  }
+  .check_boxes {
+    label {
+      display: block;
+    }
+  }
 }
