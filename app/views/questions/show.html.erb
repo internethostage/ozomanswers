@@ -19,6 +19,11 @@
       <div class='label label-primary'><%= t.name %></div>
     </span>
     <% end %>
+
+    <% if @question.image.present? %>
+    <%= image_tag @question.image.url, class: "full-width" %>
+    <% end %>
+
     <br>
     <br>
     <%# can? is a helper method that came from the CanCanCan gem to help us enforce authorization rules in the views and controllers. We didn't specifically put rules for :edit and :destroy but we put a rule for :crud which includes both of them %>

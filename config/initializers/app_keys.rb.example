@@ -1,2 +1,4 @@
 user_name:            ENV["email_user_name"] = "PUT YOUR USERNAME HERE"
 password:             ENV["email_password"]  = "PUT YOUR PASSWORD HERE"
+                      ENV['aws_access_key_id'] = "PUT YOUR "
+                      ENV['aws_secret_access_key'] =

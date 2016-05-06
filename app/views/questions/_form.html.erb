@@ -15,6 +15,7 @@
           <%= f.input :body %>
           <%= f.association :category %>
           <%= f.association :tags, input_html: {class: "chosen-select"} %>
+          <%= f.input :image %>
           <%# Byusing f.text_field :title, if @question has a value for the attribute 'title' it will populate the field with that value. This is usually the case when redisplaying the form after an error occurs %>
         <!-- <div> -->
           <%# f.label :category %>

@@ -11,7 +11,12 @@
   <% @questions.each do |q| %>
     <tbody>
       <tr>
-        <td><%= link_to q.title, question_path(q) %></td>
+        <td>    <%= link_to question_path(q) do %>
+          <%= q.title %>
+      <% if q.image.present? %>
+        <%= image_tag q.image.url(:thumb) %>
+      <% end %>
+    <% end %></td>
         <td><%= q.user_full_name %></td>
         <td><%= q.likes.count %></td>
         <td><%= q.vote_value %></td>

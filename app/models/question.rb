@@ -48,6 +48,8 @@ before_validation :titelize_title
 extend FriendlyId
 friendly_id :title, use: :history
 
+mount_uploader :image, ImageUploader
+
 def self.recent_three
   order("created_at DESC").limit(3)
 end
