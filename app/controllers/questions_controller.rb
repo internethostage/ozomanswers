@@ -53,7 +53,7 @@ before_action :authorize_question, only: [:edit, :update, :destroy]
     @list_of_liked_users ||= @question.likes.joins(:user).pluck("users.first_name").join(" ")
     respond_to do |format|
       format.html { render }
-      format.json { render json: @question.to_json }
+      format.json { render json: {question: @question, insights: @question.insights.order(created_at: :desc) } }
       format.xml { render xml: @question.to_xml }
     end
   end

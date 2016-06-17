@@ -5,6 +5,7 @@ class Question < ActiveRecord::Base
   # :destroy - which deletes all the associated answers when the question is deleted
   # :nullify - which makes "question_id" NULL for all associated answers
   has_many :answers, dependent: :destroy
+  has_many :insights, dependent: :destroy
   belongs_to :category
   belongs_to :user
 

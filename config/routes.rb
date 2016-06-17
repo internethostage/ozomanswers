@@ -47,6 +47,7 @@ resources :password_resets, only: [:new, :create, :edit, :update]
     resources :answers, only: [:create, :destroy, :edit, :update]
     resources :likes, only: [:create, :destroy]
     resources :votes, only: [:create, :update, :destroy]
+    resources :insights, only: [:create]
   end
   # get     "/questions/new"       => "questions#new",      as: :new_question
   # post    "/questions"           => "questions#create",   as: :questions

@@ -1,3 +1,16 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+#the above is equal to document ready
+  a = 10
+
+  b = 5 if a > 10
+
+  c = 5 if a == 10
+
+  capitalize = (string) ->
+    string.charAt(0).toUpperCase() + string.slice(1)
+
+  console.log capitalize("cristian")
+
+  $(".btn").on "click", ->
+    $(@).toggleClass('btn-danger')
+# the @ is equivalent to "this"
